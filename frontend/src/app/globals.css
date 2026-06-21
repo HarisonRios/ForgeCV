@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+:root {
+  --background: #1E1E1E;
+  --foreground: #FFFFFF;
+  --bg-secondary: #2D2D2D;
+  --border-color: #4A4A4A;
+  --orange-forge: #FF6B00;
+  --orange-highlight: #FFB000;
+  --text-muted: #D6D6D6;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-border-color: var(--border-color);
+  --color-orange-forge: var(--orange-forge);
+  --color-orange-highlight: var(--orange-highlight);
+  --color-text-muted: var(--text-muted);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Utilities */
+.btn-primary {
+  @apply bg-[var(--orange-forge)] text-white px-4 py-2 rounded-md font-semibold transition-all duration-200 ease-in-out hover:bg-[var(--orange-highlight)] hover:shadow-[0_0_10px_rgba(255,107,0,0.4)];
+}
+
+.btn-secondary {
+  @apply bg-[var(--bg-secondary)] border border-[var(--border-color)] text-white px-4 py-2 rounded-md font-semibold transition-all duration-200 ease-in-out hover:border-[var(--orange-forge)];
+}
+
+.input-field {
+  @apply bg-[var(--bg-secondary)] border border-[var(--border-color)] text-white rounded-md px-3 py-2 w-full focus:outline-none focus:border-[var(--orange-forge)] transition-all duration-200 ease-in-out;
+}
+
+.card {
+  @apply bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-lg p-6 shadow-md;
+}
+.hover-glow:hover {
+  box-shadow: 0 0 10px rgba(255, 107, 0, 0.4);
+}
+.forge-transition {
+  transition: all 0.2s ease-in-out;
+}
