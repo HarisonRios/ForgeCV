@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ForgeCV - {{title}}</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+    
+    :root {
+      --bg-primary: #1E1E1E;
+      --bg-secondary: #2D2D2D;
+      --border-color: #4A4A4A;
+      --orange-forge: #FF6B00;
+      --orange-highlight: #FFB000;
+      --text-main: #FFFFFF;
+      --text-muted: #D6D6D6;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      border-bottom: 2px solid var(--orange-forge);
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .header-left h1 {
+      margin: 0;
+      font-size: 32px;
+      color: var(--orange-highlight);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .header-left h2 {
+      margin: 5px 0 0 0;
+      font-size: 18px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .contact-info {
+      text-align: right;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .contact-info p {
+      margin: 2px 0;
+    }
+
+    section {
+      margin-bottom: 30px;
+      background: var(--bg-secondary);
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 4px solid var(--orange-forge);
+    }
+
+    section h3 {
+      margin-top: 0;
+      font-size: 18px;
+      color: var(--orange-highlight);
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .summary-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      white-space: pre-line;
+    }
+
+    .item {
+      margin-bottom: 20px;
+    }
+
+    .item:last-child {
+      margin-bottom: 0;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 5px;
+    }
+
+    .item-title {
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--text-main);
+    }
+
+    .item-subtitle {
+      font-size: 14px;
+      color: var(--orange-forge);
+      font-weight: 600;
+    }
+
+    .item-date {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .item-description {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 8px 0;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-badge {
+      background: linear-gradient(135deg, var(--orange-forge) 0%, var(--orange-highlight) 100%);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-left">
+        <h1>{{user.name}}</h1>
+        <h2>{{profile.headline}}</h2>
+      </div>
+      <div class="contact-info">
+        {{#if user.email}}<p>{{user.email}}</p>{{/if}}
+        {{#if profile.phone}}<p>{{profile.phone}}</p>{{/if}}
+        {{#if profile.city}}<p>{{profile.city}}, {{profile.state}}</p>{{/if}}
+      </div>
+    </header>
+
+    <section>
+      <h3>Professional Summary</h3>
+      <div class="summary-text">{{summary}}</div>
+    </section>
+
+    {{#if experiences.length}}
+    <section>
+      <h3>Forge Experiences</h3>
+      {{#each experiences}}
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">{{position}} <span class="item-subtitle">@ {{company}}</span></span>
+          <span class="item-date">{{formatDate startDate}} - {{formatDate endDate}}</span>
+        </div>
+        {{#if description}}<div class="item-description">{{description}}</div>{{/if}}
+        {{#if technologies.length}}
+        <div class="tags">
+          {{#each technologies}}
+          <span class="tag">{{this}}</span>
+          {{/each}}
+        </div>
+        {{/if}}
+      </div>
+      {{/each}}
+    </section>
+    {{/if}}
+
+    {{#if projects.length}}
+    <section>
+      <h3>Forged Projects</h3>
+      {{#each projects}}
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">{{name}}</span>
+          <span class="item-date">{{formatDate startDate}} - {{formatDate endDate}}</span>
+        </div>
+        <div class="item-subtitle">{{role}}</div>
+        {{#if description}}<div class="item-description">{{description}}</div>{{/if}}
+        {{#if technologies.length}}
+        <div class="tags">
+          {{#each technologies}}
+          <span class="tag">{{this}}</span>
+          {{/each}}
+        </div>
+        {{/if}}
+      </div>
+      {{/each}}
+    </section>
+    {{/if}}
+
+    {{#if skills.length}}
+    <section>
+      <h3>Arsenal (Skills)</h3>
+      <div class="skills-grid">
+        {{#each skills}}
+        <span class="skill-badge">{{name}}</span>
+        {{/each}}
+      </div>
+    </section>
+    {{/if}}
+
+  </div>
+</body>
+</html>
