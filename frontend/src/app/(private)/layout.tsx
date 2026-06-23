@@ -32,7 +32,7 @@ export default function PrivateLayout({ children }: { children: React.ReactNode 
       {/* Sidebar */}
       <aside className="w-full md:w-64 bg-[var(--bg-secondary)] border-r border-[var(--border-color)] flex flex-col">
         <div className="p-6 flex items-center gap-3 border-b border-[var(--border-color)]">
-          <img src="/forge.gif" alt="ForgeCV Logo" width={32} height={32} className="rounded-md" />
+          <img src="/forge.gif" alt="ForgeCV Logo" width={32} height={32} />
           <span className="text-xl font-bold uppercase tracking-wider">ForgeCV</span>
         </div>
 
