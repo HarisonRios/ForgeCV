@@ -22,6 +22,10 @@
   --font-mono: var(--font-geist-mono);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -32,11 +36,11 @@ body {
 
 /* Utilities */
 .btn-primary {
-  @apply bg-[var(--orange-forge)] text-white px-4 py-2 rounded-md font-semibold transition-all duration-200 ease-in-out hover:bg-[var(--orange-highlight)] hover:shadow-[0_0_10px_rgba(255,107,0,0.4)];
+  @apply bg-[var(--orange-forge)] text-white px-5 py-2.5 rounded-full font-semibold transition-all duration-200 ease-in-out hover:bg-[var(--orange-highlight)] hover:shadow-[0_0_12px_rgba(255,107,0,0.45)];
 }
 
 .btn-secondary {
-  @apply bg-[var(--bg-secondary)] border border-[var(--border-color)] text-white px-4 py-2 rounded-md font-semibold transition-all duration-200 ease-in-out hover:border-[var(--orange-forge)];
+  @apply bg-[var(--bg-secondary)] border border-[var(--border-color)] text-white px-5 py-2.5 rounded-full font-semibold transition-all duration-200 ease-in-out hover:border-[var(--orange-forge)];
 }
 
 .input-field {
@@ -46,9 +50,30 @@ body {
 .card {
   @apply bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-lg p-6 shadow-md;
 }
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl;
+}
+
 .hover-glow:hover {
   box-shadow: 0 0 10px rgba(255, 107, 0, 0.4);
 }
+
 .forge-transition {
   transition: all 0.2s ease-in-out;
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-enter {
+  animation: fadeInScale 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

@@ -21,6 +21,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { Toaster } from "sonner";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,6 +32,7 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <Providers>{children}</Providers>
+        <Toaster theme="dark" position="bottom-right" richColors />
       </body>
     </html>
   );
