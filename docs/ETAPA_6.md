@@ -26,7 +26,7 @@ backend/src/modules/ai/
 ```
 
 Responsabilidades:
-- `groq.service.ts`: Abstração sobre o SDK oficial `@groq/groq-sdk`, encarregada de fazer a requisição garantindo um formato de resposta `json_object`. Utiliza o modelo `llama3-70b-8192` por padrão.
+- `groq.service.ts`: Abstração sobre o SDK oficial `@groq/groq-sdk`, encarregada de fazer a requisição garantindo um formato de resposta `json_object`. Utiliza o modelo `llama-3.3-70b-versatile` por padrão.
 - `job-analysis.service.ts`: Orquestra o caso de uso principal. Busca os dados estruturados do usuário no banco (Prisma), gera o contexto em JSON para o Prompt, envia para a IA e armazena a resposta na tabela `JobAnalysis`.
 - `ai.controller.ts` e `ai.routes.ts`: Exposição dos endpoints REST protegidos para invocar a análise e buscar os resultados.
 

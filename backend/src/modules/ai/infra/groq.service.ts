@@ -25,7 +25,7 @@ export class GroqService {
   async analyzeJobMatch(
     systemPrompt: string,
     userPrompt: string,
-    model = "llama3-70b-8192"
+    model = "llama-3.3-70b-versatile"
   ): Promise<AIAnalysisResult> {
     try {
       const completion = await this.groq.chat.completions.create({
